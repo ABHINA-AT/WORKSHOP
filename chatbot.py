@@ -1,8 +1,7 @@
 import gradio
 from groq import Groq
 client = Groq(
-    api_key="",
-)
+    api_key="",)
 def initialize_messages():
     return [{"role": "system",
              "content": """You are a skilled agronomists
@@ -12,9 +11,7 @@ messages_prmt = initialize_messages()
 print(type(messages_prmt))
 def customLLMBot(user_input, history):
     global messages_prmt
-
     messages_prmt.append({"role": "user", "content": user_input})
-
     response = client.chat.completions.create(
         messages=messages_prmt,
         model="llama-3.3-70b-versatile",
